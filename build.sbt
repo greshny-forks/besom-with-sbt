@@ -2,6 +2,7 @@ ThisBuild / scalaVersion := "3.5.2"
 
 lazy val root = project
   .in(file("."))
+  .aggregate(infra, backend)
   .dependsOn(infra)
   .settings(
     Compile / mainClass := Some("infra.Main")
@@ -17,3 +18,6 @@ lazy val infra = project
       "org.virtuslab" %% "besom-compiler-plugin" % "0.3.2"
     )
   )
+
+lazy val backend = project
+  .in(file("modules/backend"))
